@@ -7,7 +7,7 @@ using namespace std;
 int countVowels(const string& text) {
     int count = 0;
     for (char c : text) {
-        char lower = tolower(c);
+        char lower = tolower(static_cast<unsigned char>(c));
         if (lower=='a'||lower=='e'||lower=='i'||lower=='o'||lower=='u') count++;
     }
     return count;
@@ -29,16 +29,23 @@ string Reverse(const string& text) {
 
 string capitalizeSecondLetter(const string& text) {
     stringstream ss(text);
-    string word, result;
+    string word;
+    string result;
     while (ss >> word) {
-        if (word.size() > 1) word[1] = toupper(word[1]);
-        result += word + " ";
+        if (word.size() > 1) word[1] = toupper(static_cast<unsigned char>(word[1]));
+        if (!result.empty()) result += " ";  // avoid trailing space
+        result += word;
     }
     return result;
 }
 
 int main() {
-    ifstream file("data.txt"); // file must contain: "This is the Advanced Computer Programming Module"
+    ifstream file("data.txt"); 
+    if (!file) {
+        cerr << "Error: Could not open file!" << endl;
+        return 1;
+    }
+
     string fileData;
     getline(file, fileData);
     file.close();
