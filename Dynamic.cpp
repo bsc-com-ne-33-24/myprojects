@@ -23,6 +23,5 @@ int main() {
     delete pInt;
     delete pStr;
 
-
     return 0;
 }

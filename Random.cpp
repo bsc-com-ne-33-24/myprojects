@@ -25,6 +25,5 @@ int main() {
     else {
         cout << "You have an active subscription." << endl;
     }
-
     return 0;
 }

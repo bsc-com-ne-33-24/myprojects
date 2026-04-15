@@ -20,5 +20,5 @@ int main() {
     cout << "varB after swap: " << varB << endl;
 
     return 0;
-    
+
 }
